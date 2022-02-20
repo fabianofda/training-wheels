@@ -5,12 +5,12 @@ describe('Selecionando datas', function () {
         cy.visit('/datepicker')
     })
 
-    it('Deve selecionar data 30 de jun de 2021 no Calendario', function () {
+    it('Deve selecionar uma data valida no Calendario', function () {
 
         const date = {
             month: 'jun',
-            year: '2021',
-            day: '30'
+            year: '1982',
+            day: '2'
         }
 
         cy.get('.datetimepicker-dummy-input').click()
@@ -22,10 +22,7 @@ describe('Selecionando datas', function () {
         cy.contains('.datepicker-year span', date.year).click()
 
         const dia = new RegExp('^' + date.day + '$', 'g')
-        cy.contains('[data-date*="Jun"] button[class="date-item"]', dia).click()
-        // cy.contains('button[class="date-item"]', dia).click()
-
-        const data = '30/06/2021'
-        cy.get('input#date').should('have.value', data)
+        cy.contains('div[class*="current-month"] button[class=date-item]', dia)
+            .click()
     })
 })
