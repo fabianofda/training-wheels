@@ -3,7 +3,8 @@
 describe('dois exemplo de testes com iframe', function () {
 
     const niceIFrame = function () {
-        return cy.get('#weareqaninja')
+        return cy
+            .get('#weareqaninja')
             .its('0.contentDocument.body').should('not.be.empty')
             .then(cy.wrap)
     }
