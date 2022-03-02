@@ -28,7 +28,7 @@ it(`deve remover a séries round 6`, function () {
 
     cy.contains(`table tbody tr`, `Round 6`)
         .then(function (item) {
-            item.find(`.delete`).click();
+            item.find(`.delete`).trigger(`click`);
         })
 
         .should(`not.exist`)
